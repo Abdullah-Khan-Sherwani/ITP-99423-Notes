@@ -41,10 +41,9 @@ int main3(){
         // Similarly, this will print the address of the array added with the number "i"
         // e.g If the address is: 0F823A38 and "i" = 1 then it will print: 0F823A39
 
-        cout << *arr << endl;
-        // or
+        // To get individual values, you can use;
         cout << *(arr + i) << endl;
-        // The "*" before the "arr" is used for dereferencing; It will go in the
+        // The "*" before the "arr" is used for dereferencing; It will go in the memory
         // and look for the address that "arr" or "(arr + i)" is giving it and 
         // bring back the value present at the address to output.
     }
@@ -57,3 +56,4 @@ int main4(){
     delete[] RandomArrayName;
     // This will delete the array and release the memory back to the system.
 }
+
