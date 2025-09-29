@@ -3,57 +3,37 @@
 using namespace std;
 
 
-// This method to create an array with a customizable size is not supported by 
-// standalone C++ itself. (however some compilers may allow you to use it.)
+// If you have to delete a number/index from the array you can overwrite it using loops
 int main(){
-    int size;
-    cout << "Enter the array size" << endl;
-    cin >> size;
-    int array[size];
-}
+    int size = 4;
+    int arr[size] = {1, 9, 5, 4};
+    
 
-// However a custom sized array can be created using the code below
+    // You can ask the user to enter the index number they want to remove but we'll assume it is 2
+    // cout << "Enter the index you want to remove" << endl;
+    // cin >> IndexToBeRemoved;
+
+    int IndexToBeRemoved = 2;
+    for (int i= IndexToBeRemoved; i < size -1; i++){ // This wil start the loop from the index position to be deleted until the second last index
+        arr[i] = arr[i+1]; // It will insert the value present in the next (i+1) index into the "i" index
+    }
+    size--; // After the loop runs, use this as the reduced array in the program that you need afterwards.
+
+}
 
 int main2(){
-    int size;
-    cout << "Enter the array size" << endl;
-    cin >> size;
+    int NumToBeInserted = 99; // Number to be inserted into the array
+    int Index = 2; // Index at which the data is to be inserted
 
+    int size = 4;
+    int arr[4] = {1, 9 ,5 ,4};
 
-    int* array = new int[size];
-    // "int*" creates a pointer named "array" 
-    // "new" allocates memory according to the "size" given in int[]
-    // "int[]" just suggests that the array created will be of integers.  
-}
-
-int main3(){
-    int arr[3] = {0, 1, 2};
-
-    for (int i = 0; i < 3; i++){
-        cout << arr[i] << endl; 
-        // This will output the value present at each index of the array
-
-        cout << arr << endl; 
-        // In hindsight, it may seem this will print the entire array. However, it 
-        // will print the address at the array is present in the memory.
-
-        cout << (arr + i) << endl;
-        // Similarly, this will print the address of the array added with the number "i"
-        // e.g If the address is: 0F823A38 and "i" = 1 then it will print: 0F823A39
-
-        // To get individual values, you can use;
-        cout << *(arr + i) << endl;
-        // The "*" before the "arr" is used for dereferencing; It will go in the memory
-        // and look for the address that "arr" or "(arr + i)" is giving it and 
-        // bring back the value present at the address to output.
+    // This loop will start from the new/appended index of the array and input the preceding value in the every index up until the index where the new value is to be added.
+    for (int i = size; i > Index; i++){
+        arr[i] = arr[i-1];
     }
+    arr[Index] = NumToBeInserted;
+    size++; // After the loop runs, use this as the appended array in the program that you need afterwards
+
+
 }
-
-int main4(){
-    int RandomArrayName[5];
-
-    // To delete an array, you can use:
-    delete[] RandomArrayName;
-    // This will delete the array and release the memory back to the system.
-}
-
